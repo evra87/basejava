@@ -1,3 +1,7 @@
+package com.urise.webapp.storage;
+
+import com.urise.webapp.model.Resume;
+
 /**
  * Array based storage for Resumes
  */
@@ -7,7 +11,7 @@ public class ArrayStorage {
     private Resume[] storage = new Resume[10000];
     private int size = 0;
 
-    void clear() {
+    public void clear() {
         storage = new Resume[10000];
         size = 0;
     }
@@ -21,12 +25,12 @@ public class ArrayStorage {
         }
     }
 
-    void save(Resume r) {
+    public void save(Resume r) {
         storage[size] = r;
         size++;
     }
 
-    Resume get(String uuid) {
+    public Resume get(String uuid) {
         for (int i = 0; i < size; i++) {
             if (uuid == storage[i].getUuid()) {
                 return storage[i];
@@ -35,7 +39,7 @@ public class ArrayStorage {
         return null;
     }
 
-    void delete(String uuid) {
+    public void delete(String uuid) {
         for (int i = 0; i < size; i++) {
             if (uuid == storage[i].getUuid()) {
                 storage[i] = storage[size - 1];
@@ -50,7 +54,7 @@ public class ArrayStorage {
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-    Resume[] getAll() {
+    public Resume[] getAll() {
         Resume result[] = new Resume[size];
         for (int i = 0; i < size; i++) {
             result[i] = storage[i];
@@ -58,7 +62,7 @@ public class ArrayStorage {
         return result;
     }
 
-    int size() {
+    public int size() {
         return size;
     }
 }
